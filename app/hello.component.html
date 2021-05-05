@@ -1,0 +1,3 @@
+<p-menu #menu [popup]="true" [model]="name"></p-menu>
+<!-- names is menuItems -->
+<button type="button" pButton icon="pi pi-bars" label="Show" (click)="menu.toggle($event)"></button>

@@ -1,0 +1,9 @@
+.testing .ui-menuitem-icon {
+  display: none !important;
+}
+.azhar .ui-menuitem-icon {
+  display: block;
+}
+body {
+  background-color: red;
+}
