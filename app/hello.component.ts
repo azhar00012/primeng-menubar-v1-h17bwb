@@ -6,7 +6,27 @@ import "./hello.component.css";
   templateUrl: "./hello.component.html"
 })
 export class HelloComponent {
-  @Input() name: any;
+  @Input() menuItems: any;
+  @Input() activeMenu: string;
+  @Output() OnValueChange = new EventEmitter();
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.menuItems.forEach(menuItem => {
+      menuItem.command = event => {
+        this.addActiveOnCommand(event);
+      };
+      if (menuItem.label === this.activeMenu) {
+        menuItem.icon = "fa fa-eye";
+      }
+    });
+  }
+
+  addActiveOnCommand(event) {
+    this.menuItems.forEach(menuItem => {
+      delete menuItem.icon;
+    });
+    event.item.icon = "fa fa-eye";
+    this.activeMenu = event.item.label;
+    this.OnValueChange.emit(this.activeMenu);
+  }
 }

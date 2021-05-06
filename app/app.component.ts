@@ -6,54 +6,26 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  // name = "Angular 5";
-  activeMenu = "Add User";
+  activeMenu = "Download";
 
-  name = [
-    // { label: "New", icon: "fa fa-eye", styleClass: "azhar" },
+  menuItems = [
     {
-      label: "New",
-      command: (event: Event) => {
-        this.addActiveOnCommand(event);
-      },
-      icon: "fa fa-eye"
+      label: "New"
     },
     {
-      label: "Download",
-      command: (event: Event) => {
-        this.addActiveOnCommand(event);
-      }
+      label: "Download"
     },
     {
-      label: "Add User",
-      command: (event: Event) => {
-        this.addActiveOnCommand(event);
-      }
+      label: "Add User"
     },
     {
-      label: "Remove User",
-      command: (event: Event) => {
-        this.addActiveOnCommand(event);
-      }
+      label: "Remove User"
     }
   ];
 
-  ngOnInit() {
-    let activeMenu = this.activeMenu;
-    this.name.forEach(function(menuItem) {
-      delete menuItem.icon;
-      if (menuItem.label === activeMenu) {
-        menuItem.icon = "fa fa-eye";
-      }
-    });
-  }
+  ngOnInit() {}
 
-  addActiveOnCommand(event) {
-    console.log(event);
-    this.name.forEach(function(menuItem) {
-      delete menuItem.icon;
-    });
-    event.item.icon = "fa fa-eye";
-    this.activeMenu = event.item.label;
+  OnValueChange(selectedMenu) {
+    this.activeMenu = selectedMenu;
   }
 }
